@@ -1,3 +1,4 @@
 {
-    "dotnet.defaultSolution": "SampleApp/SampleApp.sln"
+    "dotnet.defaultSolution": "SampleApp/SampleApp.sln",
+    "liveServer.settings.port": 5501
 }
