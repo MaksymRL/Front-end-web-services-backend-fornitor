@@ -2,19 +2,137 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Todo List</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2rem; }
-    li { margin: 0.5rem 0; }
-    .complete { color: green; }
-    .incomplete { color: red; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo List App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <div class="container">
+    <header>
+      <h1><i class="fas fa-tasks"></i> Todo List</h1>
+      <p class="subtitle">Gestisci le tue attività quotidiane</p>
+    </header>
 
-  <h1>Todo List</h1>
-  <ul id="todo-list"></ul>
+    <main>
+      <div class="app-container">
+        <!-- Form per aggiungere nuovi todo -->
+        <section class="add-todo-section">
+          <h2><i class="fas fa-plus-circle"></i> Nuova Attività</h2>
+          <form id="todo-form">
+            <div class="form-group">
+              <input 
+                type="text" 
+                id="todo-input" 
+                placeholder="Cosa devi fare?" 
+                required
+                maxlength="100"
+              >
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Aggiungi
+              </button>
+            </div>
+            <div class="form-group">
+              <label for="todo-priority" class="priority-label">
+                <i class="fas fa-flag"></i> Priorità:
+              </label>
+              <select id="todo-priority">
+                <option value="bassa">Bassa</option>
+                <option value="media" selected>Media</option>
+                <option value="alta">Alta</option>
+              </select>
+            </div>
+          </form>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- Filtri e statistiche -->
+        <section class="filters-section">
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-number" id="total-todos">0</span>
+              <span class="stat-label">Totali</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="completed-todos">0</span>
+              <span class="stat-label">Completati</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="pending-todos">0</span>
+              <span class="stat-label">In sospeso</span>
+            </div>
+          </div>
+          
+          <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="completed">Completati</button>
+            <button class="filter-btn" data-filter="pending">In sospeso</button>
+            <button class="filter-btn" data-filter="high">Priorità Alta</button>
+          </div>
+        </section>
+
+        <!-- Lista dei todo -->
+        <section class="todos-section">
+          <h2><i class="fas fa-list"></i> Le tue attività</h2>
+          <div class="loading" id="loading">Caricamento attività...</div>
+          <ul id="todo-list"></ul>
+          <div class="empty-state" id="empty-state">
+            <i class="fas fa-clipboard-list"></i>
+            <h3>Nessuna attività</h3>
+            <p>Aggiungi la tua prima attività usando il form qui sopra!</p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <p>Todo List App &copy; 2023 - Gestisci le tue attività con facilità</p>
+    </footer>
+  </div>
+
+  <!-- Modal per modifica -->
+  <div class="modal" id="edit-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fas fa-edit"></i> Modifica Attività</h3>
+        <button class="close-modal" id="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="edit-form">
+          <input type="hidden" id="edit-id">
+          <div class="form-group">
+            <label for="edit-name">Attività:</label>
+            <input 
+              type="text" 
+              id="edit-name" 
+              required
+              maxlength="100"
+            >
+          </div>
+          <div class="form-group">
+            <label for="edit-priority">Priorità:</label>
+            <select id="edit-priority">
+              <option value="bassa">Bassa</option>
+              <option value="media">Media</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="edit-isComplete">
+            <label for="edit-isComplete">Completata</label>
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-primary">Salva modifiche</button>
+            <button type="button" class="btn btn-secondary" id="cancel-edit">Annulla</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="api.js"></script>
+  <script src="ui.js"></script>
+  <script src="events.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
