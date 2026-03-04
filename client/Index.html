@@ -16,7 +16,7 @@
 
     <main>
       <div class="app-container">
-        <!-- Form per aggiungere nuovi todo -->
+        <!-- Form per aggiungere nuovi todo (priority removed) -->
         <section class="add-todo-section">
           <h2><i class="fas fa-plus-circle"></i> Nuova Attività</h2>
           <form id="todo-form">
@@ -32,20 +32,11 @@
                 <i class="fas fa-plus"></i> Aggiungi
               </button>
             </div>
-            <div class="form-group">
-              <label for="todo-priority" class="priority-label">
-                <i class="fas fa-flag"></i> Priorità:
-              </label>
-              <select id="todo-priority">
-                <option value="bassa">Bassa</option>
-                <option value="media" selected>Media</option>
-                <option value="alta">Alta</option>
-              </select>
-            </div>
+            <!-- Priority dropdown removed -->
           </form>
         </section>
 
-        <!-- Filtri e statistiche -->
+        <!-- Filtri e statistiche (high filter removed) -->
         <section class="filters-section">
           <div class="stats">
             <div class="stat">
@@ -66,7 +57,7 @@
             <button class="filter-btn active" data-filter="all">Tutti</button>
             <button class="filter-btn" data-filter="completed">Completati</button>
             <button class="filter-btn" data-filter="pending">In sospeso</button>
-            <button class="filter-btn" data-filter="high">Priorità Alta</button>
+            <!-- Priorità Alta filter removed -->
           </div>
         </section>
 
@@ -85,11 +76,11 @@
     </main>
 
     <footer>
-      <p>Todo List App &copy; 2023 - Gestisci le tue attività con facilità</p>
+      <p>Todo List App &copy; 2026 - Gestisci le tue attività con facilità</p>
     </footer>
   </div>
 
-  <!-- Modal per modifica -->
+  <!-- Modal per modifica (priority removed) -->
   <div class="modal" id="edit-modal">
     <div class="modal-content">
       <div class="modal-header">
@@ -108,14 +99,7 @@
               maxlength="100"
             >
           </div>
-          <div class="form-group">
-            <label for="edit-priority">Priorità:</label>
-            <select id="edit-priority">
-              <option value="bassa">Bassa</option>
-              <option value="media">Media</option>
-              <option value="alta">Alta</option>
-            </select>
-          </div>
+          <!-- Priority select removed -->
           <div class="form-group checkbox-group">
             <input type="checkbox" id="edit-isComplete">
             <label for="edit-isComplete">Completata</label>
@@ -130,9 +114,6 @@
   </div>
 
   <!-- Script -->
-  <script src="api.js"></script>
-  <script src="ui.js"></script>
-  <script src="events.js"></script>
-  <script src="app.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
